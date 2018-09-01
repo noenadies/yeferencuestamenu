@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+
+			#idcaja{
+				width: 100%;
+				position: relative;
+				top: 200px;
+	 background: #999999;
+  height: 150px;
+  /*IMPORTANTE*/
+  display:block;
+  justify-content: center;
+  align-items: center;		}
+
+
+  #idbt1{
+width: 100%;
+height: 90px;
+
+  }
+  #idbt2{
+width: 100%;
+height: 90px;
+
+  }
+
+  .bt1{width: 100%;
+	background-color:#009FE3;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.bt1:hover {
+	background-color:#378de5;
+}
+.bt1:active {
+	position:relative;
+	top:1px;
+}
+#idimagen{
+display: flex;
+	width: 100%;
+height: 200px;}
+
+
+  .bt2{width: 100%;
+	background-color:#009FE3;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.bt2:hover {
+	background-color:#378de5;
+}
+.bt2:active {
+	position:relative;
+	top:1px;
+}
+
+		</style>
+  
+	</head>
+	<body>
+
+
+		
+		<div id="idcaja"><img id="idimagen" src="logo2.png"><br><div id="idbt1" ><button class ="bt1" onclick="fencuesta()">Encuesta</button></div><br>
+		<div id="idbt2" ><button class ="bt2" onclick="myFunction()">Resultado Encuesta</button></div>
+		<script src="js/three.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDHiXmlSh-0U0-34DwUXELfvgEOFMGBl3Q",
+    authDomain: "yefervega2-9fd4e.firebaseapp.com",
+    databaseURL: "https://yefervega2-9fd4e.firebaseio.com",
+    projectId: "yefervega2-9fd4e",
+    storageBucket: "yefervega2-9fd4e.appspot.com",
+    messagingSenderId: "581543374835"
+  };
+  firebase.initializeApp(config);
+
+
+var resultadoencuesta="";
+var encuest="";
+
+firebase.database().ref().child("encuesta").once('value').then(function(snapshot) {
+    var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+    // ...
+    //alert(  snapshot.val());
+    encuesta=snapshot.val();
+
+console.log(encuesta);
+
+
+ 
+   // document.getElementById("idcumplimiento").innerHTML = snapshot.val();
+  });
+
+firebase.database().ref().child("aresencuesta").once('value').then(function(snapshot) {
+    var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+    // ...
+    //alert(  snapshot.val());
+   resultadoencuesta=snapshot.val();
+
+console.log(resultadoencuesta);
+
+
+ 
+   // document.getElementById("idcumplimiento").innerHTML = snapshot.val();
+  });
+
+
+function myFunction(){
+
+	location.href=String(resultadoencuesta);
+}
+function fencuesta(){
+
+	location.href=String(encuesta);
+}
+
+
+</script>
+
+
+	</body>
+</html>
