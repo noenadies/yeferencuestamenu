@@ -10,7 +10,7 @@
 			#idcaja{
 				width: 100%;
 				position: relative;
-				top: 200px;
+				top: 100px;
 	 background: #999999;
   height: 150px;
   /*IMPORTANTE*/
@@ -108,7 +108,7 @@ height: 200px;}
 var resultadoencuesta="";
 var encuest="";
 
-firebase.database().ref().child("encuesta").once('value').then(function(snapshot) {
+firebase.database().ref().child("apreguntaencu").once('value').then(function(snapshot) {
     var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
     // ...
     //alert(  snapshot.val());
